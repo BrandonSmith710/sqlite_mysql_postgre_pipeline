@@ -205,6 +205,5 @@ my_conn = connect_mysql(host = 'localhost', user = 'root',
 my_curs = get_curs(my_conn)
 sq3_conn = connect_sqlite('rpg_db.sqlite3')
 sq3_curs = get_curs(sq3_conn)
-
 sq3_conn.close()
 my_conn.close()
