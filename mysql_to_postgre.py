@@ -88,13 +88,13 @@ def insert_pg_character_inv(curs, inv_id, character_id, item_id):
 def insert_pg_cleric(curs, c_id, using_shield, mana):
     query = '''INSERT INTO cleric (character_ptr_id, using_shield, mana)
                VALUES (%s, %s, %s);'''
-    values = (c_id, using_shield, mana)
+    values = (c_id, bool(using_shield), mana)
     curs.execute(query, values)
 
 def insert_pg_mage(curs, c_id, has_pet, mana):
     query = '''INSERT INTO mage (character_ptr_id, has_pet, mana)
 	       VALUES (%s, %s, %s);'''
-    values = (c_id, has_pet, mana)
+    values = (c_id, bool(has_pet), mana)
     curs.execute(query, values)
 
 def load_pg_armory_item():
