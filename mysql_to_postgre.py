@@ -2,10 +2,10 @@ import psycopg2
 import mysql.connector
 from sqlite_to_mysql import connect_mysql, get_curs
 
-DB_NAME = 'otrwiiqf'
-USER = 'otrwiiqf'
-PASSWD = '8jS-Adsot2RPRWOJCnaTyx7vWNdFUvCm'
-HOST = 'heffalump.db.elephantsql.com'
+DB_NAME = '********'
+USER = '********'
+PASSWD = '********************************'
+HOST = '****************************'
 
 def connect_pg(dbname, user, password, host):
 	return psycopg2.connect(dbname = dbname, user = user,
@@ -211,22 +211,6 @@ def drop_pg_table(table_name):
 my_conn = connect_mysql(host = 'localhost', user = 'root',
 	                    passwd = 'touche5er#', database = 'db_one')
 my_curs = get_curs(my_conn)
-
 pg_conn = connect_pg(dbname = DB_NAME, user = USER,
 	                 password = PASSWD, host = HOST)
 pg_curs = get_curs(pg_conn)
-
-for table in 'armory_item armory_weapon character character_inv cleric mage'.split():
-	drop_pg_table(table)
-# drop_pg_table('armory_item')
-create_pg_armory_item()
-create_pg_character()
-load_pg_armory_item()
-load_pg_character()
-
-
-
-print(query_pg_character(2))
-print(pg_gain_hp(2, 5))
-print(pg_gain_strength(2, 8))
-print(pg_gain_intelligence(2, 10))
