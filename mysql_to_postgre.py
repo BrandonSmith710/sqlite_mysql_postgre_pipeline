@@ -175,9 +175,10 @@ def query_pg_char_weapon_inv():
     return res
 
 def pg_gain_hp(char_id, hp_gain):
-    q = ('UPDATE character SET hp = hp + {} '.format(hp_gain) + 
-	 'WHERE character_id = {}'.format(char_id))
-    pg_curs.execute(q)
+    q = ('''UPDATE character SET hp = hp + %s 
+	    WHERE character_id = %s''')
+    values = (hp_gain, char_id)
+    pg_curs.execute(q, values)
     pg_conn.commit()
     pg_curs.execute('SELECT * FROM character WHERE character_id = {}'.
 	format(char_id))
@@ -185,9 +186,10 @@ def pg_gain_hp(char_id, hp_gain):
     return res
 
 def pg_gain_strength(char_id, str_gain):
-    q = ('UPDATE character SET strength = strength + {} '.format(str_gain) + 
-	 'WHERE character_id = {}'.format(char_id))
-    pg_curs.execute(q)
+    q = ('''UPDATE character SET strength = strength + %s
+	    WHERE character_id = %s''')
+    values = (str_gain, char_id)
+    pg_curs.execute(q, values)
     pg_conn.commit()
     pg_curs.execute('SELECT * FROM character WHERE character_id = {}'.
 	format(char_id))
@@ -195,12 +197,13 @@ def pg_gain_strength(char_id, str_gain):
     return res
 
 def pg_gain_intelligence(char_id, int_gain):
-    q = ('UPDATE character SET intelligence = intelligence + {} '.format(
-	 int_gain) + 'WHERE character_id = {}'.format(char_id))
-    pg_curs.execute(q)
+    q = '''UPDATE character SET intelligence = intelligence + %s
+           WHERE character_id = %s'''
+    values = (int_gain, char_id)
+    pg_curs.execute(q, values)
     pg_conn.commit()
     pg_curs.execute('SELECT * FROM character WHERE character_id = {}'.
-	format(char_id))
+ 	format(char_id))
     res = pg_curs.fetchall()
     return res
 
