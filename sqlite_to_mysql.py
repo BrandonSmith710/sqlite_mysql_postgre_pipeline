@@ -171,34 +171,37 @@ def query_my_char_weapon_inv():
     return my_curs.fetchall()
 
 def my_gain_hp(char_id, hp_gain):
-    q = ('UPDATE `character` SET hp = hp + {} '.format(hp_gain) + 
-	 'WHERE character_id = {}'.format(char_id))
-    my_curs.execute(q)
+    q = ('''UPDATE `character` SET hp = hp + %s
+	    WHERE character_id = %s;''')
+    values = (hp_gain, char_id)
+    my_curs.execute(q, values)
     my_conn.commit()
-    my_curs.execute('SELECT * FROM `character` WHERE character_id = {}'.
-	format(char_id))
+    my_curs.execute('SELECT * FROM `character` WHERE character_id = {};'.
+ 	format(char_id))
     return my_curs.fetchall()
 
 def my_gain_strength(char_id, str_gain):
-    q = ('UPDATE `character` SET strength = strength + {} '.format(str_gain) + 
-         'WHERE character_id = {}'.format(char_id))
-    my_curs.execute(q)
+    q = ('''UPDATE `character` SET strength = strength + %s 
+	    WHERE character_id = %s;''')
+    values = (str_gain, char_id)
+    my_curs.execute(q, values)
     my_conn.commit()
-    my_curs.execute('SELECT * FROM `character` WHERE character_id = {}'.
-	format(char_id))
+    my_curs.execute('SELECT * FROM `character` WHERE character_id = {};'.
+ 	format(char_id))
     return my_curs.fetchall()
 
 def my_gain_intelligence(char_id, int_gain):
-    q = ('UPDATE `character` SET intelligence = intelligence + {} '.format(
-	 int_gain) + 'WHERE character_id = {}'.format(char_id))
-    my_curs.execute(q)
+    q = ('''UPDATE `character` SET intelligence = intelligence + %s
+	    WHERE character_id = %s;''')
+    values = (int_gain, char_id)
+    my_curs.execute(q, values)
     my_conn.commit()
-    my_curs.execute('SELECT * FROM `character` WHERE character_id = {}'.
+    my_curs.execute('SELECT * FROM `character` WHERE character_id = {};'.
 	format(char_id))
     return my_curs.fetchall()
 
 def drop_my_table(table_name):
-    my_curs.execute(f'DROP TABLE IF EXISTS`{table_name}`;')
+    my_curs.execute(f'DROP TABLE IF EXISTS `{table_name}`;')
                                                                             
 my_conn = connect_mysql(host = 'localhost', user = 'root',
 	                passwd = 'touche5er#', database = 'db_one')
