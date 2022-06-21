@@ -114,7 +114,7 @@ def load_pg_character():
     lst = my_curs.fetchall()
     for char_id, name, lvl, exp, hp, strength, intl, dex in lst:
 	insert_pg_character(pg_curs, char_id, name, lvl, exp,
-		                hp, strength, intl, dex)
+		            hp, strength, intl, dex)
     pg_conn.commit()
 
 def load_pg_character_inv():
@@ -214,3 +214,5 @@ my_curs = get_curs(my_conn)
 pg_conn = connect_pg(dbname = DB_NAME, user = USER,
 	             password = PASSWD, host = HOST)
 pg_curs = get_curs(pg_conn)
+my_conn.close()
+pg_curs.close()
