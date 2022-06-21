@@ -212,5 +212,5 @@ my_conn = connect_mysql(host = 'localhost', user = '****',
 	                passwd = '***********', database = '*******')
 my_curs = get_curs(my_conn)
 pg_conn = connect_pg(dbname = DB_NAME, user = USER,
-	                 password = PASSWD, host = HOST)
+	             password = PASSWD, host = HOST)
 pg_curs = get_curs(pg_conn)
