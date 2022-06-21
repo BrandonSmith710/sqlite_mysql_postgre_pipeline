@@ -201,10 +201,10 @@ def my_gain_intelligence(char_id, int_gain):
     return my_curs.fetchall()
 
 def drop_my_table(table_name):
-    my_curs.execute(f'DROP TABLE IF EXISTS `{table_name}`;')
+    my_curs.execute('DROP TABLE IF EXISTS `{}`;'.format(table_name)
                                                                             
-my_conn = connect_mysql(host = 'localhost', user = 'root',
-	                passwd = 'touche5er#', database = 'db_one')
+my_conn = connect_mysql(host = 'localhost', user = '****',
+	                passwd = '*********', database = '******')
 my_curs = get_curs(my_conn)
 sq3_conn = connect_sqlite('rpg_db.sqlite3')
 sq3_curs = get_curs(sq3_conn)
