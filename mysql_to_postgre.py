@@ -208,8 +208,8 @@ def drop_pg_table(table_name):
 	pg_curs.execute('DROP TABLE IF EXISTS {}'.format(table_name))
 	pg_conn.commit()
 
-my_conn = connect_mysql(host = 'localhost', user = 'root',
-	                    passwd = 'touche5er#', database = 'db_one')
+my_conn = connect_mysql(host = 'localhost', user = '****',
+	                passwd = '***********', database = '*******')
 my_curs = get_curs(my_conn)
 pg_conn = connect_pg(dbname = DB_NAME, user = USER,
 	                 password = PASSWD, host = HOST)
