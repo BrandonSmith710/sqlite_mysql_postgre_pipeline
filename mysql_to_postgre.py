@@ -47,14 +47,14 @@ def create_pg_character_inv():
 def create_pg_cleric():
     pg_curs.execute('''CREATE TABLE IF NOT EXISTS cleric (
 	               character_ptr_id SERIAL PRIMARY KEY,
-	               using_shield BOOL NOT NULL,
+	               using_shield BOOLEAN NOT NULL,
 	               mana INT NOT NULL);''')
     pg_conn.commit()
 
 def create_pg_mage():
     pg_curs.execute('''CREATE TABLE IF NOT EXISTS mage (
 		       character_ptr_id SERIAL PRIMARY KEY,
-		       has_pet BOOL NOT NULL,
+		       has_pet BOOLEAN NOT NULL,
   	               mana INT NOT NULL);''')
     pg_conn.commit()
 
