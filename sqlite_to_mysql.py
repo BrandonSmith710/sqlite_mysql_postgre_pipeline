@@ -50,14 +50,14 @@ def create_my_character_inv():
 def create_my_cleric():
     my_curs.execute('''CREATE TABLE IF NOT EXISTS `cleric` (
 		               character_ptr_id INT PRIMARY KEY,
-		               using_shield BOOL NOT NULL,
+		               using_shield BOOLEAN NOT NULL,
 		               mana INT NOT NULL);''')
     my_conn.commit()
 
 def create_my_mage():
     my_curs.execute('''CREATE TABLE IF NOT EXISTS `mage` (
 		               character_ptr_id INT PRIMARY KEY,
-		               has_pet BOOL NOT NULL,
+		               has_pet BOOLEAN NOT NULL,
 		               mana INT NOT NULL);''')
     my_conn.commit()
 
